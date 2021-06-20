@@ -1,0 +1,22 @@
+<div>
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>Phone</td>
+            <td>Email</td>
+            <td>Telephone</td>
+        </tr>
+        <tr *ngFor="let person of contacts;">
+            <td>{{person.contactname}}</td>
+            <td>
+                <p *ngFor="let phone of person.phone;">{{phone.phonenumber}}</p>
+            </td>
+            <td>
+                <p *ngFor="let email of person.email;">{{email.emailaddress}}</p>
+            </td>
+            <td>
+                <p *ngFor="let telephone of person.telephone;">{{telephone.telephonenumber}}</p>
+            </td>
+        </tr>
+    </table>
+</div>

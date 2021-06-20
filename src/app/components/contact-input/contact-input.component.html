@@ -1,0 +1,45 @@
+<div id="contact-form-root">
+    <form [formGroup]="contactForm">
+        <!--<label for="name">Contact Name</label>-->
+        <input formControlName="contactname" type="text" name="name" placeholder="Contact Name" />
+        <span class="error-msg"
+            *ngIf="contactForm.get('contactname').errors && contactForm.get('contactname').errors['required']">Contact
+            name cannot be empty</span>
+        <span class="error-msg"
+            *ngIf="contactForm.get('contactname').errors && contactForm.get('contactname').errors['maxlength']">Max
+            length is 10</span>
+        <span class="error-msg"
+            *ngIf="contactForm.get('contactname').errors && contactForm.get('contactname').errors['minlength']">Min
+            length is 2</span>
+
+        <!--phone number list-->
+        <div *ngFor="let phone of contactForm.get('phone').controls; let i=index" [formGroup]="phone">
+
+            <div>
+                <input type="number" placeholder="Phone number" formControlName="phonenumber" />
+                <button (click)="removePhone(i)">Remove</button>
+            </div>
+        </div>
+        <button (click)="addPhone()">Add Phone</button>
+
+        <!--email list-->
+        <div *ngFor="let email of contactForm.get('email').controls; let i=index" [formGroup]="email">
+            <div>
+                <input type="email" placeholder="Email" formControlName="emailaddress"/>
+                <button (click)="removeEmail(i)">Remove</button>
+            </div>
+        </div>
+        <button (click)="addEmail()">Add Email</button>
+
+        <!--telephone list-->
+        <div *ngFor="let telephone of contactForm.get('telephone').controls; let i=index" [formGroup]="telephone">
+            <div>
+                <input type="number" formControlName="telephonenumber" placeholder="Telephone"/>
+                <button (click)="removeTelephone(i)">Remove</button>
+            </div>
+        </div>
+        <button (click)="addTelephone()">Add Telephone</button>
+    </form>
+
+    <button (click)="addNewContact()">Add Contact</button>
+</div>
