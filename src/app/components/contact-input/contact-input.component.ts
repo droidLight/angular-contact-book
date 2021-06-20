@@ -11,7 +11,7 @@ export class ContactInputComponent implements OnInit {
 
   contactForm: any;
 
-  constructor(private formBuilder: FormBuilder, private contactService:ContactService) { }
+  constructor(private formBuilder: FormBuilder, private contactService: ContactService) { }
 
 
   ngOnInit(): void {
@@ -22,6 +22,15 @@ export class ContactInputComponent implements OnInit {
       telephone: this.formBuilder.array([])
     });
     console.log(this.contactForm);
+  }
+
+  //save new contact
+  addNewContact() {
+    if (this.contactForm.status === "VALID") {
+      console.log(this.contactForm.value);
+      this.contactService.saveContact(this.contactForm.value);
+    }
+
   }
 
 
@@ -52,22 +61,19 @@ export class ContactInputComponent implements OnInit {
     );
   }
 
-  addNewContact() {
-    console.log(this.contactForm.value);
-    this.contactService.saveContact(this.contactForm.value);
-  }
 
-  removePhone(index:number){
+
+  removePhone(index: number) {
     let phoneList = this.contactForm.get("phone") as FormArray;
     phoneList.removeAt(index);
   }
 
-  removeEmail(index:number){
+  removeEmail(index: number) {
     let emailList = this.contactForm.get("email") as FormArray;
     emailList.removeAt(index);
   }
 
-  removeTelephone(index:number){
+  removeTelephone(index: number) {
     let teleList = this.contactForm.get("telephone") as FormArray;
     teleList.removeAt(index);
   }

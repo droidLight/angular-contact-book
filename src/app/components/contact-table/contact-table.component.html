@@ -1,13 +1,18 @@
-<div>
+<div id="table-root">
+
     <table>
-        <tr>
+
+        <thead>
             <td>Name</td>
             <td>Phone</td>
             <td>Email</td>
             <td>Telephone</td>
-        </tr>
+        </thead>
+
         <tr *ngFor="let person of contacts;">
-            <td>{{person.contactname}}</td>
+            <td>
+                <p>{{person.contactname}}</p>
+            </td>
             <td>
                 <p *ngFor="let phone of person.phone;">{{phone.phonenumber}}</p>
             </td>

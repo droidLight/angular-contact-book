@@ -6,5 +6,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'contact-book';
+
+  modalState: Record<string, boolean> = {
+    "modal": true,
+    "modal-open": false,
+    "modal-close": true
+  };
+
+  showModal() {
+    this.modalState = {
+      "modal": true,
+      "modal-open": true,
+      "modal-close": false
+    };
+  }
+
+  closeModal() {
+    this.modalState = {
+      "modal": true,
+      "modal-open": false,
+      "modal-close": true
+    };
+  }
 }

@@ -1,0 +1,52 @@
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+#contact-form-root {
+  padding: 16px;
+}
+
+input {
+    padding:8px 16px;
+    font-size: 16px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 500;
+    margin: 8px;
+}
+
+.btn{
+    border: none;
+    padding: 8px 16px;
+    margin: 8px;
+    align-self: center;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 16px;
+    background-color: #80bfff;
+}
+
+.btn-remove{
+    background-color: orangered;
+    color: white;
+}
+.btn-add{
+    background-color: palegreen;
+}
+.divider{
+    height: 1px;
+    background-color: grey;
+}
+.header-text{
+    font-family: 'Source Sans Pro', sans-serif;
+}
+.error-msg{
+    color: red;
+    font-family: 'Source Sans Pro', sans-serif;
+}

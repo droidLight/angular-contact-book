@@ -1,1 +1,41 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+html, body{
+    margin: 0px;    
+}
+
+.flex{
+    display: flex;
+}
+
+.row{
+    flex-direction: row;
+}
+
+.column{
+    flex-direction: column;
+}
+
+.modal{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;    
+    z-index: 1;
+    background-color: rgba(0,0,0,0.3);
+    padding: 32px;
+    overflow: auto;
+}
+.modal-content{
+    background: white;
+    padding: 8px;
+    margin: auto;
+    width: 70%;
+}
+.modal-close{
+    display: none;
+}
+.modal-open{
+    display: block;
+}

@@ -1,3 +1,12 @@
-<app-contact-input></app-contact-input>
-<app-contact-table></app-contact-table>
-<router-outlet></router-outlet>
+<div id="root" class="flex column">
+
+    <div [ngClass]="modalState">
+        <div class="modal-content">
+            <button (click)="closeModal()">close</button>
+            <app-contact-input></app-contact-input>
+        </div>
+    </div>
+
+    <app-contact-table></app-contact-table>
+    <button (click)="showModal()" class="btn"><i class="fa fa-plus"></i></button>    
+</div>

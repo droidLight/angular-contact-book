@@ -1,45 +1,67 @@
 <div id="contact-form-root">
     <form [formGroup]="contactForm">
-        <!--<label for="name">Contact Name</label>-->
-        <input formControlName="contactname" type="text" name="name" placeholder="Contact Name" />
-        <span class="error-msg"
-            *ngIf="contactForm.get('contactname').errors && contactForm.get('contactname').errors['required']">Contact
-            name cannot be empty</span>
-        <span class="error-msg"
-            *ngIf="contactForm.get('contactname').errors && contactForm.get('contactname').errors['maxlength']">Max
-            length is 10</span>
-        <span class="error-msg"
-            *ngIf="contactForm.get('contactname').errors && contactForm.get('contactname').errors['minlength']">Min
-            length is 2</span>
+        <div class="flex column">
 
-        <!--phone number list-->
-        <div *ngFor="let phone of contactForm.get('phone').controls; let i=index" [formGroup]="phone">
-
-            <div>
-                <input type="number" placeholder="Phone number" formControlName="phonenumber" />
-                <button (click)="removePhone(i)">Remove</button>
+            <input formControlName="contactname" type="text" name="name" placeholder="Contact Name" />
+            <div class=error-container>
+                <div class="error-msg"
+                    *ngIf="contactForm.get('contactname').touched && contactForm.get('contactname').errors && contactForm.get('contactname').errors['required']">
+                    Contact
+                    name cannot be empty</div>
+                <div class="error-msg"
+                    *ngIf="contactForm.get('contactname').errors && contactForm.get('contactname').errors['maxlength']">
+                    Max
+                    length is 10</div>
+                <div class="error-msg"
+                    *ngIf="contactForm.get('contactname').errors && contactForm.get('contactname').errors['minlength']">
+                    Min
+                    length is 2</div>
             </div>
-        </div>
-        <button (click)="addPhone()">Add Phone</button>
 
-        <!--email list-->
-        <div *ngFor="let email of contactForm.get('email').controls; let i=index" [formGroup]="email">
-            <div>
-                <input type="email" placeholder="Email" formControlName="emailaddress"/>
-                <button (click)="removeEmail(i)">Remove</button>
-            </div>
-        </div>
-        <button (click)="addEmail()">Add Email</button>
+            <!--phone number list-->
+            <div class="flex column">
+                <span class="header-text">Phone</span>
+                <div *ngFor="let phone of contactForm.get('phone').controls; let i=index" [formGroup]="phone">
 
-        <!--telephone list-->
-        <div *ngFor="let telephone of contactForm.get('telephone').controls; let i=index" [formGroup]="telephone">
-            <div>
-                <input type="number" formControlName="telephonenumber" placeholder="Telephone"/>
-                <button (click)="removeTelephone(i)">Remove</button>
+                    <div>
+                        <input type="number" placeholder="Phone number" formControlName="phonenumber" />
+                        <button (click)="removePhone(i)" class="btn btn-remove"><i class="fa fa-trash"></i></button>
+                    </div>
+                    
+                </div>
+                <button (click)="addPhone()" class="btn btn-add"><i class="fa fa-plus"></i></button>
             </div>
+            <div class="divider"></div>
+
+            <!--email list-->
+            <div class="flex column">
+                <span class="header-text">Email</span>
+                <div *ngFor="let email of contactForm.get('email').controls; let i=index" [formGroup]="email">
+                    <div>
+                        <input type="email" placeholder="Email" formControlName="emailaddress" />
+                        <button (click)="removeEmail(i)" class="btn btn-remove"><i class="fa fa-trash"></i></button>
+                    </div>
+                </div>
+                <button (click)="addEmail()" class="btn btn-add"><i class="fa fa-plus"></i></button>
+            </div>
+            <div class="divider"></div>
+
+            <!--telephone list-->
+            <div class="flex column">
+                <span class="header-text">Telephone</span>
+                <div *ngFor="let telephone of contactForm.get('telephone').controls; let i=index"
+                    [formGroup]="telephone">
+                    <div>
+                        <input type="number" formControlName="telephonenumber" placeholder="Telephone" />
+                        <button (click)="removeTelephone(i)" class="btn btn-remove"><i class="fa fa-trash"></i></button>
+                    </div>
+                </div>
+                <button (click)="addTelephone()" class="btn btn-add"><i class="fa fa-plus"></i></button>
+            </div>
+            <div class="divider"></div>
+
+            <button (click)="addNewContact()" class="btn">Add Contact</button>
         </div>
-        <button (click)="addTelephone()">Add Telephone</button>
     </form>
 
-    <button (click)="addNewContact()">Add Contact</button>
 </div>
