@@ -16,6 +16,8 @@
                     *ngIf="contactForm.get('contactname').errors && contactForm.get('contactname').errors['minlength']">
                     Min
                     length is 2</div>
+                <div class="error-msg"
+                    *ngIf="contactForm.get('contactname').errors && contactForm.get('contactname').errors['exists']">Contact Already exists</div>
             </div>
 
             <!--phone number list-->
@@ -40,6 +42,9 @@
                         <div class="error-msg"
                             *ngIf="phone.get('phonenumber').errors && phone.get('phonenumber').errors['pattern']">Only
                             numbers</div>
+                        <div class="error-msg"
+                            *ngIf="phone.get('phonenumber').errors && phone.get('phonenumber').errors['region']">Invalid
+                            Region</div>
                     </div>
                 </div>
                 <button (click)="addPhone()" class="btn btn-add"><i class="fa fa-plus"></i></button>
