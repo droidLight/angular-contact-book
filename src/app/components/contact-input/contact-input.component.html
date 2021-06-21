@@ -3,7 +3,7 @@
         <div class="flex column">
 
             <input formControlName="contactname" type="text" name="name" placeholder="Contact Name" />
-            <div class=error-container>
+            <div class="error-container">
                 <div class="error-msg"
                     *ngIf="contactForm.get('contactname').touched && contactForm.get('contactname').errors && contactForm.get('contactname').errors['required']">
                     Contact
@@ -24,10 +24,23 @@
                 <div *ngFor="let phone of contactForm.get('phone').controls; let i=index" [formGroup]="phone">
 
                     <div>
-                        <input type="number" placeholder="Phone number" formControlName="phonenumber" />
+                        <input type="text" placeholder="Phone number" formControlName="phonenumber" />
                         <button (click)="removePhone(i)" class="btn btn-remove"><i class="fa fa-trash"></i></button>
                     </div>
-                    
+                    <div class="error-container">
+                        <div class="error-msg"
+                            *ngIf="phone.get('phonenumber').errors && phone.get('phonenumber').errors['required']">
+                            Required</div>
+                        <div class="error-msg"
+                            *ngIf="phone.get('phonenumber').errors && phone.get('phonenumber').errors['minlength']">Min
+                            of 10 digits</div>
+                        <div class="error-msg"
+                            *ngIf="phone.get('phonenumber').errors && phone.get('phonenumber').errors['maxlength']">Max
+                            of 10 digits</div>
+                        <div class="error-msg"
+                            *ngIf="phone.get('phonenumber').errors && phone.get('phonenumber').errors['pattern']">Only
+                            numbers</div>
+                    </div>
                 </div>
                 <button (click)="addPhone()" class="btn btn-add"><i class="fa fa-plus"></i></button>
             </div>
@@ -40,6 +53,17 @@
                     <div>
                         <input type="email" placeholder="Email" formControlName="emailaddress" />
                         <button (click)="removeEmail(i)" class="btn btn-remove"><i class="fa fa-trash"></i></button>
+                    </div>
+                    <div class="error-container">
+                        <div class="error-msg"
+                            *ngIf="email.get('emailaddress').errors && email.get('emailaddress').errors['required']">
+                            Required</div>
+                        <div class="error-msg"
+                            *ngIf="email.get('emailaddress').errors && email.get('emailaddress').errors['minlength']">
+                            Min Length is 10</div>
+                        <div class="error-msg"
+                            *ngIf="email.get('emailaddress').errors && email.get('emailaddress').errors['maxlength']">
+                            Max Length is 255</div>
                     </div>
                 </div>
                 <button (click)="addEmail()" class="btn btn-add"><i class="fa fa-plus"></i></button>
@@ -54,6 +78,17 @@
                     <div>
                         <input type="number" formControlName="telephonenumber" placeholder="Telephone" />
                         <button (click)="removeTelephone(i)" class="btn btn-remove"><i class="fa fa-trash"></i></button>
+                    </div>
+                    <div class="error-container">
+                        <div class="error-msg"
+                            *ngIf="telephone.get('telephonenumber').errors && telephone.get('telephonenumber').errors['required']">
+                            Required</div>
+                        <div class="error-msg"
+                            *ngIf="telephone.get('telephonenumber').errors && telephone.get('telephonenumber').errors['minlength']">
+                            Min Length is 11</div>
+                        <div class="error-msg"
+                            *ngIf="telephone.get('telephonenumber').errors && telephone.get('telephonenumber').errors['maxlength']">
+                            Max Length is 11</div>
                     </div>
                 </div>
                 <button (click)="addTelephone()" class="btn btn-add"><i class="fa fa-plus"></i></button>

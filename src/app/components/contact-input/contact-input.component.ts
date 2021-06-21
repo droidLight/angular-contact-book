@@ -38,7 +38,7 @@ export class ContactInputComponent implements OnInit {
     let phoneList = this.contactForm.get("phone") as FormArray;
     phoneList.push(
       this.formBuilder.group({
-        phonenumber: new FormControl('', [Validators.required, Validators.maxLength(10), Validators.minLength(10)])
+        phonenumber: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern("^[0-9]*$")])
       })
     );
   }
